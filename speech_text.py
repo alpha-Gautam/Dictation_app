@@ -3,7 +3,7 @@ import time
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-# load_dotenv()
+load_dotenv()
 
 
 # Replace "YOUR_API_KEY" with your actual Google  API key
@@ -18,9 +18,9 @@ from dotenv import load_dotenv
 
 class Dictation:
     speed=125
-    topic="Dictation"
+    topic="any topic"
 
-    pause_constant=5
+    pause_constant=50
     
 
     def __init__(self):
@@ -31,7 +31,7 @@ class Dictation:
         
     def text_generate(self):
         try:
-            response = self.model.generate_content(f"give latest and interesting information about the topic in 10 words and use professional words on topic {self.topic}" )
+            response = self.model.generate_content(f"give latest and interesting information about the topic in 50 words and use professional words on topic {self.topic}" )
             text= response.text
             print(text)
             # self.speech(txt)
