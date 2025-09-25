@@ -68,7 +68,6 @@ class Dictation:
         print(f"Speed updated to {cls.pause_constant} words per minute")
 
 
-
-
-d=Dictation()
-d.speech()
+if __name__=="__main__":
+    d=Dictation()
+    d.speech()
