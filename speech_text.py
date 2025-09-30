@@ -42,10 +42,16 @@ class Dictation:
             print(text)
             return text
 
-    def tell(self, txt:str, speed=speed):
+    def tell(self, txt: str, speed=None, voice_id=2):
+        if speed is None:
+            speed = Dictation.speed
         engine = pyttsx3.init()
         if speed:
             engine.setProperty('rate', value=speed)
+        if voice_id:
+            voices = engine.getProperty('voices')
+            if voice_id < len(voices):
+                engine.setProperty('voice', voices[voice_id].id)
         engine.say(txt)
         engine.runAndWait()
         engine.stop()
@@ -79,5 +85,5 @@ if __name__=="__main__":
         if a=='q':
 	        break
 
-		
+
 
