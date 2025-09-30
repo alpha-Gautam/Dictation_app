@@ -18,7 +18,8 @@ load_dotenv()
 
 class Dictation:
     speed=125
-    topic="anyone like('history', 'future', 'economy',' mathematics', 'physics')"
+
+    topic="anyone like ('history', 'future', 'economy','mathematics', 'physics', 'philosophy')"
 
     pause_constant=25
     
@@ -73,6 +74,8 @@ if __name__=="__main__":
     d.speech()
     while(True):
         a=input('Enter q to quit: \n')
+        if a=='s':
+            d.speech()
         if a=='q':
 	        break
 
