@@ -19,7 +19,7 @@ load_dotenv()
 class Dictation:
     speed=125
 
-    topic="anyone like ('history', 'future', 'economy','mathematics', 'physics', 'philosophy')"
+    topic="anyone like ('history', 'future', 'economy','mathematics', 'physics', 'philosophy', 'science', 'technology', 'biology', 'chemistry', 'geography', 'politics')"
 
     pause_constant=25
     
@@ -32,7 +32,10 @@ class Dictation:
         
     def text_generate(self):
         try:
-            response = self.model.generate_content(f"give formal information about the topic in 50 words and use professional words on topic {self.topic}" )
+            # Updated prompt to request a new paragraph each time, even for the same topic
+            response = self.model.generate_content(f"Write a new, unique paragraph about the topic in 50 words using professional words. Ensure it's different each time: topic {self.topic}" )
+            
+            
             text= response.text
             print(text)
             # self.speech(txt)
@@ -42,7 +45,7 @@ class Dictation:
             print(text)
             return text
 
-    def tell(self, txt: str, speed=None, voice_id=2):
+    def tell(self, txt: str, speed=None, voice_id=1):
         if speed is None:
             speed = Dictation.speed
         engine = pyttsx3.init()
@@ -83,7 +86,7 @@ if __name__=="__main__":
         if a=='s':
             d.speech()
         if a=='q':
-	        break
+            break
 
 
 
