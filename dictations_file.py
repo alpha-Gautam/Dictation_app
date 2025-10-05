@@ -5,17 +5,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-
-# Replace "YOUR_API_KEY" with your actual Google  API key
-# genai.configure(api_key=os.getenv("GOOGLE_API_KEY")) 
-
-# # For a synchronous call (most common for simple requests)
-# model = genai.GenerativeModel('gemini-2.5-flash') # Using 'gemini-pro' as 'gemini-2.5-flash' might be a future or internal model name\
-# topic="Space "
-# response = model.generate_content(f"give latest and interesting information about the topic in 5 lines and use professional words:\n topic:-{topic}" )
-# txt= response.text
-# print(txt)
-
 class Dictation:
     speed=125
 
@@ -23,7 +12,6 @@ class Dictation:
 
     pause_constant=25
     
-
     def __init__(self):
         
         genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
