@@ -33,7 +33,7 @@ class Dictation:
     def text_generate(self):
         try:
             # Updated prompt to request a new paragraph each time, even for the same topic
-            response = self.model.generate_content(f"Write a new, unique paragraph about the topic in 50 words using professional words. Ensure it's different each time: topic {self.topic}" )
+            response = self.model.generate_content(f"Write a paragraph about the any of the topic in 50 words using professional words. Ensure it's different each time" )
             
             
             text= response.text
@@ -45,7 +45,7 @@ class Dictation:
             print(text)
             return text
 
-    def tell(self, txt: str, speed=None, voice_id=1):
+    def tell(self, txt: str, speed=None, voice_id=0):
         if speed is None:
             speed = Dictation.speed
         engine = pyttsx3.init()
