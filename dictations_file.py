@@ -4,6 +4,9 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 load_dotenv()
+import datetime
+import random
+
 
 class Dictation:
     speed=125
@@ -20,8 +23,16 @@ class Dictation:
         
     def text_generate(self):
         try:
+            # Generate random datetime
+            random_year = random.randint(1900, 2100)
+            random_month = random.randint(1, 12)
+            random_day = random.randint(1, 28)
+            random_hour = random.randint(0, 23)
+            random_minute = random.randint(0, 59)
+            random_second = random.randint(0, 59)
+            random_datetime = datetime.datetime(random_year, random_month, random_day, random_hour, random_minute, random_second)
             # Updated prompt to request a new paragraph each time, even for the same topic
-            response = self.model.generate_content(f"Write a paragraph about the any of the topic in 50 words using professional words. Ensure it's different each time" )
+            response = self.model.generate_content(f"Write a paragraph about the any of the topic in 50 words using professional words according to time {random_datetime.isoformat()}" )
             
             
             text= response.text
